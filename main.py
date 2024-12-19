@@ -76,6 +76,35 @@ def insertion_sort(arr):
 
     return arr
 
+# Merge Sort
+def merge(left, right):
+    l = 0
+    r = 0
+    arr = []
+
+    while (l < len(left) and r < len(right)):
+        if (left[l] < right[r]):
+            arr.append(left[l])
+            l += 1
+        else:
+            arr.append(right[r])
+            r += 1
+    
+    arr.extend(left[l:])
+    arr.extend(right[r:])
+
+    return arr
+
+def merge_sort(arr):
+    if (len(arr) <= 1):
+        return arr
+    
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+
+    return merge(left, right)
+
 if __name__ == "__main__":
     # Searching Algorithm
     arr_even = [2, 4, 65, 86, 102, 200]
@@ -137,3 +166,9 @@ if __name__ == "__main__":
         print("Insertion Sort: arr_sort answer correct!")
     else:
         print("Insertion Sort: arr_sort answer incorrect!")
+
+    # Merge Sort
+    if (merge_sort(arr_sort) == answer_arr_sort):
+        print("Merge Sort: arr_sort answer correct!")
+    else:
+        print("Merge Sort: arr_sort answer incorrect!")
