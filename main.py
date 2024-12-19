@@ -65,7 +65,16 @@ def bubble_sort(arr):
 def insertion_sort(arr):
     if (len(arr) == 0):
         return -1
+    
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i
+        while (key < arr[(j - 1)]):
+            arr[j - 1] = arr[(j)]
+            j -= 1
+        arr[j] = key
 
+    return arr
 
 if __name__ == "__main__":
     # Searching Algorithm
@@ -122,3 +131,9 @@ if __name__ == "__main__":
         print("Bubble Sort: arr_sort answer correct!")
     else:
         print("Bubble Sort: arr_sort answer incorrect!")
+
+    # Insertion Sort
+    if (insertion_sort(arr_sort) == answer_arr_sort):
+        print("Insertion Sort: arr_sort answer correct!")
+    else:
+        print("Insertion Sort: arr_sort answer incorrect!")
